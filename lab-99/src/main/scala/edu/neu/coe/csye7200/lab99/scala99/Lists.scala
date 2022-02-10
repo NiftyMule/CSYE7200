@@ -28,24 +28,44 @@ object P00 {
 object P01 {
 
 //  @scala.annotation.tailrec
-  def last[X](xs: List[X]): X = ??? // TO BE IMPLEMENTED
+  def last[X](xs: List[X]): X = xs match {
+    case Nil => throw new NoSuchElementException
+    case h :: Nil => h
+    case h :: t => last(t)
+  }
 }
 
 object P02 {
 
 //  @scala.annotation.tailrec
-  def penultimate[X](xs: List[X]): X = ??? // TO BE IMPLEMENTED
+  def penultimate[X](xs: List[X]): X = xs match {
+    case Nil => throw new NoSuchElementException
+    case _ :: Nil => throw new NoSuchElementException
+    case p :: _ :: Nil => p
+    case _ :: t => penultimate(t)
+  }
 }
 
 object P03 {
 
 //  @scala.annotation.tailrec
-  def kth[X](k: Int, xs: List[X]): X = ??? // TO BE IMPLEMENTED
+  def kth[X](k: Int, xs: List[X]): X = if (k < 0) throw new NoSuchElementException else xs match {
+    case Nil => throw new NoSuchElementException
+    case h :: t => if (k == 0) h else kth(k - 1, t)
+  }
 }
 
 object P04 {
 
-  def length[X](xs: List[X]): Int = ??? // TO BE IMPLEMENTED
+  def length[X](xs: List[X]): Int = {
+    @scala.annotation.tailrec
+    def inner(xs: List[X], l: Int): Int = xs match {
+      case Nil => l
+      case _ :: t => inner(t, l + 1)
+    }
+
+    inner(xs, 0)
+  }
 }
 
 object P05 {
