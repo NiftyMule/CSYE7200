@@ -71,15 +71,21 @@ object P04 {
 object P05 {
 
   def reverse[X](xs: List[X]): List[X] = {
-    // TO BE IMPLEMENTED
-    ???
+    @scala.annotation.tailrec
+    def inner(ys: List[X], acc: List[X]): List[X] = ys match {
+      case Nil => acc
+      case h :: t => inner(t, h :: acc)
+    }
+
+    inner(xs, Nil)
   }
 }
 
 object P06 {
 
 //@tailrec
-def isPalindrome[X](xs: List[X]): Boolean = ??? // TO BE IMPLEMENTED
+def isPalindrome[X](xs: List[X]): Boolean = xs == xs.reverse
+//def isPalindrome[X](xs: List[X]): Boolean = xs.take(xs.length/2) == xs.drop(xs.length/2).reverse
 }
 
 object P07 {
