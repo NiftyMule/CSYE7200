@@ -4,6 +4,8 @@ version := "1.0"
 
 scalaVersion := "2.12.10"
 
+lazy val asstamr = project in file("assignment-analyze-movie-rating")
+
 lazy val asstfc = project in file("assignment-functional-composition")
 
 lazy val assthw = project in file("assignment-helloworld")
@@ -40,7 +42,7 @@ lazy val sparkapp = project in file("spark-app")
 
 lazy val sparkcsv = project in file("spark-csv")
 
-lazy val root = (project in file(".")).aggregate(assthw, asstmd, asstrs, asstfc, asstwc, asstsw, fp, num,  mapred, concor, labsort, labparser, labactors, lab99, asstch, sparkapp, sparkcsv)
+lazy val root = (project in file(".")).aggregate(asstamr, assthw, asstmd, asstrs, asstfc, asstwc, asstsw, fp, num,  mapred, concor, labsort, labparser, labactors, lab99, asstch, sparkapp, sparkcsv)
 
 parallelExecution in Test := false
 
